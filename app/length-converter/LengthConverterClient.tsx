@@ -35,11 +35,29 @@ export default function LengthConverterClient() {
       setTimeout(() => setCopied(false), 1500);
     }
   };
-
+  // Dosyanın en üstüne bu sabiti ekle (useState'lerin üstüne)
+  const faqData = [
+    {
+      question: "Bu araç ne işe yarar?",
+      answer:
+        "Uzunluk Dönüştürücü, mm, cm, metre, km, inç, ayak, yard ve mil gibi birimler arasında anında dönüşüm yapmanı sağlar.",
+    },
+    {
+      question: "Nasıl kullanılır?",
+      answer:
+        "Dönüştürmek istediğin değeri gir, sol taraftan kaynak birimi seç, sağ taraftan hedef birimi seç. Sonuç anında görünür.",
+    },
+    {
+      question: "Sonucu nasıl kopyalarım?",
+      answer:
+        "Sonucun yanındaki kopyala ikonuna tıklamanız yeterli. Değer panonuza otomatik olarak kopyalanır.",
+    },
+  ];
   return (
     <ToolLayout
       title="Uzunluk Dönüştürücü"
       description="Uzunluk birimleri arasında hızlı ve doğru dönüşüm yapın."
+      faq={faqData}
     >
       <div className="grid gap-4">
         <input
