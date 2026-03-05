@@ -22,14 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
+    <html lang="tr" className="h-full">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white flex flex-col min-h-screen`}
       >
         <Header />
 
         {/* min-h-screen + flex-col + flex-1 → footer her zaman altta */}
-        <div className="flex-1">
+        <div className="flex-1 pt-4 pb-8">
           {children}
         </div>
 

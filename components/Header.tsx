@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 // İleride yeni araç ekledikçe buraya satır eklemen yeterli
 const navLinks = [
   { href: "/length-converter", label: "Uzunluk" },
-  // { href: "/weight-converter", label: "Ağırlık" },   ← ileride eklenecek
+  { href: "/weight-converter", label: "Ağırlık" }, 
   // { href: "/code-beautifier", label: "Kod Düzenleyici" },
 ];
 
