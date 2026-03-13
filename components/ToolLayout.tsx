@@ -16,8 +16,9 @@ type ToolLayoutProps = {
 
 export default function ToolLayout({ title, description, children, faq }: ToolLayoutProps) {
   return (
-    <main className="max-w-6xl mx-auto px-4 py-6 bg-gray-900 text-white">
-      <h1 className="text-2xl font-bold mb-2">{title}</h1>
+<main className="w-[calc(100%-8rem)] mx-auto px-8 py-6 bg-gray-900 text-white rounded-lg">
+
+        <h1 className="text-2xl font-bold mb-2">{title}</h1>
       <p className="text-gray-300 mb-6">{description}</p>
 
       <div className="grid md:grid-cols-3 gap-6">

@@ -8,6 +8,11 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { href: "/length-converter", label: "Uzunluk" },
   { href: "/weight-converter", label: "Ağırlık" }, 
+  { href: "/temperature-converter", label: "Sıcaklık" },
+  { href: "/area-converter", label: "Alan" },
+  { href: "/speed-converter", label: "Hız" },
+  { href: "/time-converter", label: "Zaman" },
+
   // { href: "/code-beautifier", label: "Kod Düzenleyici" },
 ];
 

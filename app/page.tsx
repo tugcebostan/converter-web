@@ -42,18 +42,19 @@ export default function HomePage() {
               >
 
                 {/* Kategori etiketi */}
-                <div className="flex items-center gap-2 mb-3">
-                  <Icon size={28} className="text-yellow-400 pr-2"  />
-                  <span className="text-xs text-blue-400 font-medium uppercase tracking-wide">
-                    {tool.category}
+                  <span className="text-[10px] text-yellow-200 font-medium uppercase tracking-wide">
+                    {tool.category.name}
                   </span>
-                </div>
 
 
                 {/* Başlık */}
-                <h2 className="text-lg font-semibold mt-1 mb-2 text-white group-hover:text-blue-400 transition-colors">
+                    <div className="flex items-center gap-2 mb-3">
+                  <Icon size={28} className="text-red-400 pr-2"  />
+                  <h2 className="text-lg font-semibold mt-1 mb-2 text-white group-hover:text-blue-400 transition-colors">
                   {tool.title}
-                </h2>
+                </h2>     
+                </div>
+          
 
                 {/* Açıklama */}
                 <p className="text-gray-400 text-sm">
@@ -61,7 +62,7 @@ export default function HomePage() {
                 </p>
 
                 {/* Devam oku linki */}
-                <span className="inline-block mt-4 text-sm text-blue-500 group-hover:underline">
+                <span className="inline-block mt-4 text-sm text-yellow-500 group-hover:underline">
                   ...
                 </span>
               </Link>

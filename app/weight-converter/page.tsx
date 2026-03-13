@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import WeightConverterClient from "./WeightConverterClient";
+import { buildFaqSchema } from "@/lib/utils";
 
 export const metadata: Metadata = {
     title: "Ağırlık Dönüştürücü — Hızlı Birim Çevirici",
@@ -10,27 +11,17 @@ export const metadata: Metadata = {
         type: "website",
     },
 };
-const faqSchema={
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    mainEntity:[
-        {
-            "@type":"Question",
-            name:"Bu araç ne işe yarar?",
-            acceptedAnswer:{
-                "@type":"Answer",
-                text: "Ağırlık Dönüştürücü, mg, g, kg, ton, oz, lb ve stone gibi birimler arasında anında dönüşüm yapmanı sağlar.",
-            },
-        },    {
-      "@type": "Question",
-      name: "Nasıl kullanılır?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Dönüştürmek istediğin değeri gir, sol taraftan kaynak birimi seç, sağ taraftan hedef birimi seç. Sonuç anında görünür.",
-      },
-    },
-  ],
-};
+
+const faqSchema = buildFaqSchema([
+  {
+    question: "Bu araç ne işe yarar?",
+    answer: "Ağırlık Dönüştürücü, mg, g, kg, ton, oz, lb ve stone gibi birimler arasında anında dönüşüm yapmanı sağlar.",
+  },
+  {
+    question: "Nasıl kullanılır?",
+    answer: "Dönüştürmek istediğin değeri gir, sol taraftan kaynak birimi seç, sağ taraftan hedef birimi seç. Sonuç anında görünür.",
+  },
+]);
 export default function WeightConverterPage(){
     return(
         <>
