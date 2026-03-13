@@ -61,3 +61,17 @@ export const tools: Tool[] = [
     //   category: "Geliştirici",
     // },
 ];
+export function groupToolsByCategory(toolList: Tool[]) {
+    const groups: Record<string, { categoryName: string; tools: Tool[] }> = {};
+    for (const tool of toolList) {
+        const key = tool.category.key;
+        if (!groups[key]) {
+            groups[key] = {
+                categoryName: tool.category.name,
+                tools: [],
+            };
+        }
+        groups[key].tools.push(tool);
+    }
+    return Object.values(groups);
+}

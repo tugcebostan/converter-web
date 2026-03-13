@@ -9,13 +9,13 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // Sitenin genel metadata'sı — her sayfa kendi metadata'sıyla bunu ezer
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"), 
   title: {
     default: "ToolBox — Ücretsiz Online Araçlar",
-    template: "%s | ToolBox",   // ← Sayfa başlığı otomatik " | ToolBox" ekler
+    template: "%s | ToolBox",
   },
   description: "Birim dönüştürücü, kod düzenleyici ve daha fazlası — ücretsiz online araçlar.",
 };
-
 export default function RootLayout({
   children,
 }: {

@@ -1,93 +1,70 @@
-"use client"
+"use client";
 
-import ResultBox from "@/components/ResultBox";
-import ToolLayout from "@/components/ToolLayout";
-import { convertWeight, WEIGHT_UNITS, WeightUnit } from "@/lib/converters/weight"
-import { copyToClipboard } from "@/lib/utils";
 import { useState } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import { convertWeight, WEIGHT_UNITS, WeightUnit } from "@/lib/converters/weight";
 import { LuArrowLeftRight } from "react-icons/lu";
+import { copyToClipboard } from "@/lib/utils";
+import ResultBox from "@/components/ResultBox";
+import tr from "@/lib/i18n/tr";
 
+const t = tr;
 const units = Object.values(WEIGHT_UNITS);
 
-const faqData = [
-    {
-        question: "Bu araç ne işe yarar?",
-        answer: "Ağırlık Dönüştürücü, mg, g, kg, ton, oz, lb ve stone gibi birimler arasında anında dönüşüm yapmanı sağlar.",
-    },
-    {
-        question: "Nasıl kullanılır?",
-        answer: "Dönüştürmek istediğin değeri gir, sol taraftan kaynak birimi seç, sağ taraftan hedef birimi seç. Sonuç anında görünür.",
-    },
-    {
-        question: "Sonucu nasıl kopyalarım?",
-        answer: "Sonucun yanındaki kopyala ikonuna tıklamanız yeterli. Değer panonuza otomatik olarak kopyalanır.",
-    },
-];
 export default function WeightConverterClient() {
-    const [value, setValue] = useState<number>(1);
-    const [from, setFrom] = useState<WeightUnit>("kg");
-    const [to, setTo] = useState<WeightUnit>("g");
-    const [copied, setCopied] = useState(false);
+  const [value, setValue] = useState<number>(1);
+  const [from, setFrom] = useState<WeightUnit>("kg");
+  const [to, setTo] = useState<WeightUnit>("g");
+  const [copied, setCopied] = useState(false);
 
-    const result = convertWeight(value, from, to);
+  const result = convertWeight(value, from, to);
 
-    const swapUnits = () => {
-        setFrom(to);
-        setTo(from);
-    };
-    const handleCopy = () => {
-        copyToClipboard(result.toString(), () => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 1500);
-        });
-    };
+  const swapUnits = () => { setFrom(to); setTo(from); };
+  const handleCopy = () => {
+    copyToClipboard(result.toString(), () => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
 
-    return (
-        <ToolLayout
-            title="Ağırlık Dönüştürücü"
-            description="Ağırlık birimleri arasında hızlı ve doğru dönüşüm yapın."
-            faq={faqData}
-        >
-            <div className="grid gap-6">
-                <div className="flex items-center gap-2">
-                    <input
-                        type="number"
-                        value={value}
-                        onChange={(e) => setValue(Number(e.target.value))}
-                        className="w-24  text-white border border-gray-600 rounded-lg px-4 py-2 text-sm text-center focus:outline-none focus:border-blue-500"
-
-                    />
-                    <select
-                        value={from}
-                        onChange={(e) => setFrom(e.target.value as WeightUnit)}
-                        className=" text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-                    >
-                        {units.map((u) => (
-                            <option key={u.key} value={u.key}>{u.label}</option>
-                        ))}
-                    </select>
-                    <button
-                        onClick={swapUnits}
-                        aria-label="Birimleri değiştir"
-                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors flex-shrink-0"
-                    >
-                        <LuArrowLeftRight size={18} />
-                    </button>
-
-                    <select
-                        value={to}
-                        onChange={(e) => setTo(e.target.value as WeightUnit)}
-                        className=" text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-                    >
-                        {units.map((u) => (
-                            <option key={u.key} value={u.key}>{u.label}</option>
-                        ))}
-                    </select>
-                </div>
-
-                <ResultBox result={result} copied={copied} onCopy={handleCopy} />
-            </div>
-        </ToolLayout>
-    )
-
+  return (
+    <ToolLayout
+      title={t.converters.weight.title}
+      description={t.converters.weight.description}
+      faq={[...t.converters.weight.faq]}
+    >
+      <div className="grid gap-6">
+        <div className="flex items-center gap-2">
+          <input
+            type="number"
+            value={value}
+            onChange={(e) => setValue(Number(e.target.value))}
+            className="w-24 text-white border border-gray-600 rounded-lg px-4 py-2 text-sm text-center focus:outline-none focus:border-blue-500"
+          />
+          <select
+            value={from}
+            onChange={(e) => setFrom(e.target.value as WeightUnit)}
+            className="text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+          >
+            {units.map((u) => <option key={u.key} value={u.key}>{u.label}</option>)}
+          </select>
+          <button
+            onClick={swapUnits}
+            aria-label={t.common.swapLabel}
+            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors flex-shrink-0"
+          >
+            <LuArrowLeftRight size={18} />
+          </button>
+          <select
+            value={to}
+            onChange={(e) => setTo(e.target.value as WeightUnit)}
+            className="text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+          >
+            {units.map((u) => <option key={u.key} value={u.key}>{u.label}</option>)}
+          </select>
+        </div>
+        <ResultBox result={result} copied={copied} onCopy={handleCopy} />
+      </div>
+    </ToolLayout>
+  );
 }
