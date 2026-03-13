@@ -12,42 +12,42 @@ export type Tool = {
 
 export const tools: Tool[] = [
     {
-        href: "/length-converter",
+        href: "/tools/unit-converter/length",
         title: "Uzunluk Dönüştürücü",
         description: "Metre, kilometre, inç, fit ve daha fazlası arasında anında dönüşüm.",
         icon: LiaRulerVerticalSolid,
         category: ToolCategories.UnitConverter,
     },
     {
-        href: "/weight-converter",
+        href: "/tools/unit-converter/weight",
         title: "Ağırlık Dönüştürücü",
         description: "Kilogram, pound, ons arasında dönüşüm.",
         icon: LiaBalanceScaleSolid,
         category: ToolCategories.UnitConverter,
     },
     {
-        href: "/temperature-converter",
+        href: "/tools/unit-converter/temperature",
         title: "Sıcaklık Dönüştürücü",
         description: "Celsius, Fahrenheit ve Kelvin arasında anında dönüşüm.",
         icon: LiaThermometerFullSolid,
         category: ToolCategories.UnitConverter,
     },
     {
-        href: "/area-converter",
+        href: "/tools/unit-converter/area",
         title: "Alan Dönüştürücü",
         description: "Metre kare, dönüm, hektar, akre ve daha fazlası arasında anında dönüşüm.",
         icon: LiaSquare,
         category: ToolCategories.UnitConverter,
     },
     {
-        href: "/speed-converter",
+        href: "/tools/unit-converter/speed",
         title: "Hız Dönüştürücü",
         description: "km/h, mph, knot, Mach ve daha fazlası arasında anında dönüşüm.",
         icon: LiaTachometerAltSolid,
         category: ToolCategories.UnitConverter,
     },
     {
-        href: "/time-converter",
+        href: "/tools/unit-converter/time",
         title: "Zaman Dönüştürücü",
         description: "Saniye, dakika, saat, gün, hafta, ay ve yıl arasında anında dönüşüm.",
         icon: LiaClock,
