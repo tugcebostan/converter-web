@@ -13,10 +13,9 @@ const groups = groupToolsByCategory(tools);
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openCategories, setOpenCategories] = useState<string[]>([
-    t.categories.unitConverter,
-  ]);
-
+  const [openCategories, setOpenCategories] = useState<string[]>(
+    () => groups.map((g) => g.categoryName)
+  );
   const toggleCategory = (key: string) => {
     setOpenCategories((prev) =>
       prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]

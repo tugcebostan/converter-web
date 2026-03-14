@@ -7,6 +7,7 @@ import { LuArrowLeftRight } from "react-icons/lu";
 import { copyToClipboard } from "@/lib/utils";
 import ResultBox from "@/components/ResultBox";
 import tr from "@/lib/i18n/tr";
+import UnitSelect from "@/components/UnitSelect";
 
 const t = tr;
 const units = Object.values(AREA_UNITS);
@@ -41,13 +42,12 @@ export default function AreaConverterClient() {
             onChange={(e) => setValue(Number(e.target.value))}
             className="w-24 text-white border border-gray-600 rounded-lg px-4 py-2 text-sm text-center focus:outline-none focus:border-blue-500"
           />
-          <select
+          <UnitSelect
+            options={units}
             value={from}
-            onChange={(e) => setFrom(e.target.value as AreaUnit)}
-            className="text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-          >
-            {units.map((u) => <option key={u.key} value={u.key}>{u.label}</option>)}
-          </select>
+            onChange={(val) => setFrom(val as AreaUnit)}
+            ariaLabel={t.common.fromUnit}
+          />
           <button
             onClick={swapUnits}
             aria-label={t.common.swapLabel}
@@ -55,13 +55,12 @@ export default function AreaConverterClient() {
           >
             <LuArrowLeftRight size={18} />
           </button>
-          <select
+          <UnitSelect
+            options={units}
             value={to}
-            onChange={(e) => setTo(e.target.value as AreaUnit)}
-            className="text-white border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-          >
-            {units.map((u) => <option key={u.key} value={u.key}>{u.label}</option>)}
-          </select>
+            onChange={(val) => setFrom(val as AreaUnit)}
+            ariaLabel={t.common.toUnit}
+          />
         </div>
         <ResultBox result={result} copied={copied} onCopy={handleCopy} />
       </div>

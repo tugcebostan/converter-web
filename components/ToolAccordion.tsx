@@ -29,7 +29,7 @@ export default function ToolAccordion() {
         return (
           <div
             key={group.categoryName}
-            className="border border-gray-700 rounded-xl overflow-hidden"
+            className="border border-gray-700 bg-gray-900 rounded-xl overflow-hidden"
           >
             {/* Akordiyon başlığı */}
             <button
