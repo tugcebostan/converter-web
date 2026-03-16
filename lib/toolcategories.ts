@@ -8,6 +8,14 @@ export const ToolCategories = {
     key: "CodeBeautifier",
     name: "Kod Düzenleyici",
   },
+  Encoder: {
+    key: "Encoder",
+    name: "Encoder/Decoder",
+  },
+  Converter: {
+    key: "Converter",
+    name: "Dosya Çeviri"
+  },
 } as const;
 
 // Tip otomatik üretilir — elle yazmana gerek yok

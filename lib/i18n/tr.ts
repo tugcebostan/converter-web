@@ -70,6 +70,8 @@ const tr = {
   categories: {
     unitConverter: "Birim Dönüştürücü",
     codeBeautifier: "Kod Düzenleyici",
+    encoder: "Encode / Decode",
+    converter: "Dosya Çeviri",
   },
 
   // ─── Araç kart açıklamaları ───────────────────────
@@ -119,6 +121,26 @@ const tr = {
       title: "HTML Düzenleyici",
       description: "HTML kodunu güzelleştirin ve sıkıştırın.",
       shortTitle: "HTML"
+    },
+    base64: {
+      title: "Base64 Encode / Decode",
+      description: "Metni Base64 formatına çevirin veya Base64'ü metne dönüştürün.",
+      shortTitle: "Base64",
+    },
+    url: {
+      title: "URL Encode / Decode",
+      description: "URL'leri encode edin veya decode edin.",
+      shortTitle: "URL",
+    },
+    htmlEntity: {
+      title: "HTML Entity Encode / Decode",
+      description: "HTML özel karakterlerini entity formatına çevirin veya geri dönüştürün.",
+      shortTitle: "HTML Entity",
+    },
+    hash: {
+      title: "Hash Üretici",
+      description: "MD5, SHA-1, SHA-256 ve SHA-512 hash değerleri üretin.",
+      shortTitle: "Hash",
     },
   },
 
@@ -303,6 +325,120 @@ const tr = {
         {
           question: "Bu araç ne işe yarar?",
           answer: "HTML kodunu okunabilir hale getirir ve sıkıştırır.",
+        },
+        {
+          question: "Verilerim güvende mi?",
+          answer: "Tüm işlemler tarayıcınızda gerçekleşir, hiçbir veri sunucuya gönderilmez.",
+        },
+      ],
+    },
+    base64: {
+      title: "Base64 Encode / Decode",
+      description: "Metni Base64 formatına çevirin veya Base64'ü metne dönüştürün.",
+      inputPlaceholder: "Metni buraya yazın...",
+      outputPlaceholder: "Sonuç burada görünecek...",
+      encodeBtn: "Encode",
+      decodeBtn: "Decode",
+      errorInvalidBase64: "Geçersiz Base64 girdisi. Lütfen doğru bir Base64 metni girin.",
+      metaTitle: "Base64 Encode / Decode — Ücretsiz Online Araç",
+      metaDescription: "Metni anında Base64 formatına çevirin veya Base64 kodunu orijinal metne dönüştürün. Tamamen ücretsiz, tarayıcıda çalışır.",
+      metaOgTitle: "Base64 Encode / Decode",
+      metaOgDescription: "Metni Base64'e veya Base64'ü metne anında dönüştürün.",
+      faq: [
+        {
+          question: "Base64 nedir?",
+          answer: "Base64, ikili verileri ASCII karakterlerine dönüştüren bir kodlama yöntemidir. E-posta ekleri, API token'ları ve veri aktarımında yaygın kullanılır.",
+        },
+        {
+          question: "Encode ile Decode arasındaki fark nedir?",
+          answer: "Encode: düz metni Base64 formatına çevirir. Decode: Base64 formatındaki metni orijinal haline geri döndürür.",
+        },
+        {
+          question: "Verilerim güvende mi?",
+          answer: "Tüm işlemler tarayıcınızda gerçekleşir, hiçbir veri sunucuya gönderilmez.",
+        },
+        {
+          question: "Base64 bir şifreleme yöntemi midir?",
+          answer: "Hayır. Base64 şifreleme değil, sadece kodlamadır. Gizli verileri korumak için kullanılmamalıdır.",
+        },
+      ],
+    },
+    url: {
+      title: "URL Encode / Decode",
+      description: "URL adreslerini güvenli formata çevirin veya orijinaline döndürün.",
+      inputPlaceholder: "URL veya metin girin...",
+      outputPlaceholder: "Sonuç burada görünecek...",
+      encodeBtn: "Encode",
+      decodeBtn: "Decode",
+      errorInvalidUrl: "Geçersiz URL encoding. Lütfen geçerli bir URL encoded metin girin.",
+      metaTitle: "URL Encode / Decode — Ücretsiz Online Araç",
+      metaDescription: "URL adreslerini anında encode veya decode edin. Tamamen ücretsiz, tarayıcıda çalışır.",
+      metaOgTitle: "URL Encode / Decode",
+      metaOgDescription: "URL'leri encode veya decode edin.",
+      faq: [
+        {
+          question: "URL Encode nedir?",
+          answer: "URL'lerde kullanılamayan karakterleri (boşluk, Türkçe harfler, özel karakterler) %20 gibi güvenli formata dönüştürme işlemidir.",
+        },
+        {
+          question: "Ne zaman kullanılır?",
+          answer: "API isteklerinde, form verilerinde veya URL parametrelerinde özel karakter içeren değerleri güvenle iletmek için kullanılır.",
+        },
+        {
+          question: "Verilerim güvende mi?",
+          answer: "Tüm işlemler tarayıcınızda gerçekleşir, hiçbir veri sunucuya gönderilmez.",
+        },
+      ],
+    },
+    htmlEntity: {
+      title: "HTML Entity Encode / Decode",
+      description: "HTML özel karakterlerini güvenli entity formatına çevirin veya orijinaline döndürün.",
+      inputPlaceholder: "HTML içeren metni girin...",
+      outputPlaceholder: "Sonuç burada görünecek...",
+      encodeBtn: "Encode",
+      decodeBtn: "Decode",
+      metaTitle: "HTML Entity Encode / Decode — Ücretsiz Online Araç",
+      metaDescription: "HTML özel karakterlerini anında encode veya decode edin. Tamamen ücretsiz, tarayıcıda çalışır.",
+      metaOgTitle: "HTML Entity Encode / Decode",
+      metaOgDescription: "HTML karakterlerini entity formatına çevirin veya geri dönüştürün.",
+      faq: [
+        {
+          question: "HTML Entity nedir?",
+          answer: "&lt; gibi kodlardır. Tarayıcının HTML etiketi olarak yorumlamaması gereken < > & gibi karakterleri güvenle göstermek için kullanılır.",
+        },
+        {
+          question: "Ne zaman kullanılır?",
+          answer: "Kullanıcıdan alınan HTML içeriğini ekrana güvenle basmak, kod örneklerini göstermek veya XSS saldırılarını önlemek için kullanılır.",
+        },
+        {
+          question: "Verilerim güvende mi?",
+          answer: "Tüm işlemler tarayıcınızda gerçekleşir, hiçbir veri sunucuya gönderilmez.",
+        },
+      ],
+    },
+    hash: {
+      title: "Hash Üretici",
+      description: "Metninizin MD5, SHA-1, SHA-256 ve SHA-512 hash değerlerini anında hesaplayın.",
+      inputPlaceholder: "Hash'lenecek metni girin...",
+      generateBtn: "Hash Üret",
+      copyLabel: "Kopyala",
+      algorithmLabel: "Algoritma",
+      metaTitle: "Hash Üretici — MD5, SHA-1, SHA-256, SHA-512",
+      metaDescription: "Metninizin MD5, SHA-1, SHA-256 ve SHA-512 hash değerlerini anında üretin. Tamamen ücretsiz, tarayıcıda çalışır.",
+      metaOgTitle: "Hash Üretici",
+      metaOgDescription: "MD5, SHA-1, SHA-256 ve SHA-512 hash değerleri üretin.",
+      faq: [
+        {
+          question: "Hash nedir?",
+          answer: "Hash, bir metni sabit uzunlukta benzersiz bir değere dönüştüren tek yönlü bir işlemdir. Aynı metin her zaman aynı hash değerini üretir.",
+        },
+        {
+          question: "Hash geri çevrilebilir mi?",
+          answer: "Hayır. Hash tek yönlüdür, orijinal metne geri dönemezsiniz. Bu yüzden şifre doğrulamada kullanılır.",
+        },
+        {
+          question: "MD5 mi SHA-256 mı kullanmalıyım?",
+          answer: "Güvenlik gerektiren işlemler için SHA-256 veya SHA-512 kullanın. MD5 ve SHA-1 artık güvenli kabul edilmemektedir, sadece checksum doğrulama gibi işlemler için uygundur.",
         },
         {
           question: "Verilerim güvende mi?",

@@ -7,14 +7,7 @@ export async function copyToClipboard(
     await navigator.clipboard.writeText(text);
     onSuccess();
   } catch {
-    // Eski tarayıcılar için fallback
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-    onSuccess();
+    console.warn("Panoya kopyalama başarısız.");
   }
 }
 // =============================================

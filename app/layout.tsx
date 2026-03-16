@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // Sitenin genel metadata'sı — her sayfa kendi metadata'sıyla bunu ezer
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"), 
+  metadataBase: new URL("https://convertools.xyz"), 
   title: {
     default: "ToolBox — Ücretsiz Online Araçlar",
     template: "%s | ToolBox",
