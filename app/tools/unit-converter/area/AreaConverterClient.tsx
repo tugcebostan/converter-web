@@ -58,7 +58,7 @@ export default function AreaConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as AreaUnit)}
+            onChange={(val) => setTo(val as AreaUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>

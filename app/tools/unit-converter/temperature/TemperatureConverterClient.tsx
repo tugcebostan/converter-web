@@ -58,7 +58,7 @@ export default function TemperatureConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as TemperatureUnit)}
+            onChange={(val) => setTo(val as TemperatureUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>

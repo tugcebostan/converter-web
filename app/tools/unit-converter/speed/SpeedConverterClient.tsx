@@ -58,7 +58,7 @@ export default function SpeedConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as SpeedUnit)}
+            onChange={(val) => setTo(val as SpeedUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>

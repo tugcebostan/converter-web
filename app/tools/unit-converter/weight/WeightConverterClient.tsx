@@ -58,7 +58,7 @@ export default function WeightConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as WeightUnit)}
+            onChange={(val) => setTo(val as WeightUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>

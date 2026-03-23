@@ -58,7 +58,7 @@ export default function LengthConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as LengthUnit)}
+            onChange={(val) => setTo(val as LengthUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>

@@ -1,4 +1,3 @@
-import { html } from "@codemirror/lang-html";
 
 const tr = {
 

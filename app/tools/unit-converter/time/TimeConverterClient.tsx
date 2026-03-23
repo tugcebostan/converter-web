@@ -58,7 +58,7 @@ export default function TimeConverterClient() {
           <UnitSelect
             options={units}
             value={to}
-            onChange={(val) => setFrom(val as TimeUnit)}
+            onChange={(val) => setTo(val as TimeUnit)}
             ariaLabel={t.common.toUnit}
           />
         </div>
