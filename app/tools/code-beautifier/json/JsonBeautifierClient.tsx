@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
-import CodeMirrorEditor from "@/components/CodeMirrorEditor";
-import { beautifyJson, minifyJson, validateJson } from "@/lib/beautifiers";
+import { beautifyJson, minifyJson } from "@/lib/beautifiers";
 import { copyToClipboard } from "@/lib/utils";
 import tr from "@/lib/i18n/tr";
 import StatusMessage from "@/components/StatusMessage";
