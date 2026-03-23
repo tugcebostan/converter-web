@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 
 type Option = {
@@ -14,6 +14,7 @@ type Props = {
     onChange: (value: string) => void;
     ariaLabel?: string;
 }
+
 export default function UnitSelect({ options, value, onChange, ariaLabel }: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export default function UnitSelect({ options, value, onChange, ariaLabel }: Prop
     const id = useId();
 
     const selected = options.find((o) => o.key === value);
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -32,13 +34,13 @@ export default function UnitSelect({ options, value, onChange, ariaLabel }: Prop
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-    // Açılınca seçili öğeye scroll
+
     useEffect(() => {
         if (!isOpen || !listRef.current) return;
         const selectedEl = listRef.current.querySelector("[aria-selected='true']");
         selectedEl?.scrollIntoView({ block: "nearest" });
     }, [isOpen]);
-    // Klavye navigasyonu
+
     function handleKeyDown(e: React.KeyboardEvent) {
         const currentIndex = options.findIndex((o) => o.key === value);
 
@@ -64,9 +66,9 @@ export default function UnitSelect({ options, value, onChange, ariaLabel }: Prop
     }
 
     return (
-        <div ref={containerRef} className="relative">
+        <div ref={containerRef} className="relative w-full">
 
-            {/* Tetikleyici buton */}
+            {/* Tetikleyici buton — tam genişlik */}
             <button
                 type="button"
                 role="combobox"
@@ -76,7 +78,7 @@ export default function UnitSelect({ options, value, onChange, ariaLabel }: Prop
                 aria-label={ariaLabel}
                 onKeyDown={handleKeyDown}
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="flex items-center justify-between gap-2 min-w-[160px] bg-gray-900 text-white border border-gray-600 rounded-lg px-3 py-2 text-sm hover:border-blue-500 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+                className="flex items-center justify-between gap-2 w-full bg-gray-900 text-white border border-gray-600 rounded-lg px-3 py-2 text-sm hover:border-blue-500 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
             >
                 <span className="truncate">{selected?.label ?? "Seçin"}</span>
                 {isOpen

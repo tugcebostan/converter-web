@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import md5 from "crypto-js/md5";
 import ToolLayout from "@/components/ToolLayout";
 import { copyToClipboard } from "@/lib/utils";
 import tr from "@/lib/i18n/tr";
+import md5 from "@/lib/md5";
 
 const t = tr;
 const ct = tr.converters.hash;
@@ -13,24 +13,21 @@ async function generateSha(text: string, algorithm: string): Promise<string> {
   const encoded = new TextEncoder().encode(text);
   const hashBuffer = await crypto.subtle.digest(algorithm, encoded);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  // Her byte'ı 2 haneli hex'e çeviriyoruz
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
-
+ 
 function generateMd5(text: string): string {
   return md5(text).toString();
 }
-
+ 
 type HashAlgorithm = "MD5" | "SHA-1" | "SHA-256" | "SHA-512";
-
 const ALGORITHMS: HashAlgorithm[] = ["MD5", "SHA-1", "SHA-256", "SHA-512"];
+
+
 export default function HashClient() {
   const [input, setInput] = useState("");
   const [results, setResults] = useState<Record<HashAlgorithm, string>>({
-    "MD5": "",
-    "SHA-1": "",
-    "SHA-256": "",
-    "SHA-512": "",
+    "MD5": "", "SHA-1": "", "SHA-256": "", "SHA-512": "",
   });
   const [copied, setCopied] = useState<HashAlgorithm | null>(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +36,6 @@ export default function HashClient() {
     if (!input.trim()) return;
     setLoading(true);
 
-    // Tüm algoritmaları paralel çalıştırıyoruz — Promise.all ile
     const [sha1, sha256, sha512] = await Promise.all([
       generateSha(input, "SHA-1"),
       generateSha(input, "SHA-256"),
@@ -108,30 +104,31 @@ export default function HashClient() {
           {loading ? "Hesaplanıyor..." : ct.generateBtn}
         </button>
 
-        {/* Sonuçlar — her algoritma için ayrı satır */}
-        <div className="flex flex-col gap-3">
+        {/* Sonuçlar */}
+        <div className="flex flex-col gap-4">
           {ALGORITHMS.map((algo) => (
             <div key={algo} className="flex flex-col gap-1">
-              <span className="text-xs text-gray-400 font-medium">
-                {algo}
-              </span>
-              <div className="flex items-center gap-2">
+              <span className="text-xs text-gray-400 font-medium">{algo}</span>
+
+              {/* Hash değeri + kopyala butonu — mobilde alt alta */}
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   readOnly
                   value={results[algo]}
                   placeholder="—"
-                  className="flex-1 p-3 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none font-mono"
+                  className="flex-1 p-3 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none font-mono min-w-0 overflow-x-auto"
                   aria-label={`${algo} hash değeri`}
                   aria-live="polite"
                 />
                 <button
                   onClick={() => handleCopy(algo)}
                   disabled={!results[algo]}
-                  className="px-3 py-3 text-xs bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                  className="sm:w-24 py-2 px-3 text-xs bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
                 >
                   {copied === algo ? t.common.copied : ct.copyLabel}
                 </button>
               </div>
+
             </div>
           ))}
         </div>

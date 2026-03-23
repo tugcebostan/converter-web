@@ -8,6 +8,7 @@ import { copyToClipboard } from "@/lib/utils";
 import ResultBox from "@/components/ResultBox";
 import tr from "@/lib/i18n/tr";
 import UnitSelect from "@/components/UnitSelect";
+import UnitConverterRow from "@/components/UnitConverterRow";
 
 const t = tr;
 const units = Object.values(TEMPERATURE_UNITS);
@@ -34,36 +35,19 @@ export default function TemperatureConverterClient() {
       description={t.converters.temperature.description}
       faq={[...t.converters.temperature.faq]}
     >
-      <div className="grid gap-6">
-        <div className="flex items-center gap-2">
-          <input
-            type="number"
+        <div className="grid gap-6">
+          <UnitConverterRow
             value={value}
-            onChange={(e) => setValue(Number(e.target.value))}
-            className="w-24 text-white border border-gray-600 rounded-lg px-4 py-2 text-sm text-center focus:outline-none focus:border-blue-500"
+            onValueChange={setValue}
+            fromUnit={from}
+            toUnit={to}
+            units={units}
+            onFromChange={(v) => setFrom(v as TemperatureUnit)}
+            onToChange={(v) => setTo(v as TemperatureUnit)}
+            onSwap={swapUnits}
           />
-          <UnitSelect
-            options={units}
-            value={from}
-            onChange={(val) => setFrom(val as TemperatureUnit)}
-            ariaLabel={t.common.fromUnit}
-          />
-          <button
-            onClick={swapUnits}
-            aria-label={t.common.swapLabel}
-            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors flex-shrink-0"
-          >
-            <LuArrowLeftRight size={18} />
-          </button>
-          <UnitSelect
-            options={units}
-            value={to}
-            onChange={(val) => setTo(val as TemperatureUnit)}
-            ariaLabel={t.common.toUnit}
-          />
+          <ResultBox result={result} copied={copied} onCopy={handleCopy} />
         </div>
-        <ResultBox result={result} copied={copied} onCopy={handleCopy} />
-      </div>
     </ToolLayout>
   );
 }
