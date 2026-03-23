@@ -20,6 +20,8 @@ export default function JsonBeautifierClient() {
     const [status, setStatus] = useState<"idle" | "valid" | "invalid">("idle");
     const [errorMsg, setErrorMsg] = useState("");
     const [copied, setCopied] = useState(false);
+    const [minify, setMinify] = useState(false);
+    const [beautify, setBeautify] = useState(false);
     const [actionCount, setActionCount] = useState(0);
 
     // ─── İşlem fonksiyonları ─────────────────────────
@@ -30,10 +32,14 @@ export default function JsonBeautifierClient() {
         setActionCount((c) => c + 1);
         if (result.success) {
             setOutput(result.output);
+            setBeautify(true);
+            setMinify(false);
             setStatus("valid");
             setErrorMsg("");
         } else {
             setOutput("");
+            setBeautify(false);
+            setMinify(false);
             setStatus("invalid");
             setErrorMsg(t.common.errorLabel(result.line));
         }
@@ -45,10 +51,14 @@ export default function JsonBeautifierClient() {
         setActionCount((c) => c + 1);
         if (result.success) {
             setOutput(result.output);
+            setBeautify(false);
+            setMinify(true);
             setStatus("valid");
             setErrorMsg("");
         } else {
             setOutput("");
+            setBeautify(false);
+            setMinify(false);
             setStatus("invalid");
             setErrorMsg(t.common.errorLabel(result.line));
         }
@@ -68,6 +78,11 @@ export default function JsonBeautifierClient() {
             setTimeout(() => setCopied(false), 1500);
         });
     }
+    function handleSetIndent(size: IndentSize) {
+        setIndent(size);
+        if(minify) handleMinify();
+        if(beautify) handleBeautify();
+    }
 
     // ─── Render ──────────────────────────────────────
 
@@ -85,13 +100,14 @@ export default function JsonBeautifierClient() {
                     {/* İşlem butonları */}
                     <button
                         onClick={handleBeautify}
-                        className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                        className={`px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors ${beautify? "bg-gray-400":"bg-blue-400"}`}
+
                     >
                         {t.common.beautify}
                     </button>
                     <button
                         onClick={handleMinify}
-                        className="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                        className={`px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors ${minify? "bg-gray-400":"bg-blue-600"}`}
                     >
                         {t.common.minify}
                     </button>
@@ -102,7 +118,7 @@ export default function JsonBeautifierClient() {
                         {([2, 4] as IndentSize[]).map((size) => (
                             <button
                                 key={size}
-                                onClick={() => setIndent(size)}
+                                onClick={() => handleSetIndent(size)}
                                 className={`px-3 py-1 text-xs rounded-lg transition-colors ${indent === size
                                     ? "bg-blue-600 text-white"
                                     : "bg-gray-700 text-gray-300 hover:bg-gray-600"

@@ -30,7 +30,7 @@ export default function RootLayout({
         <Header />
 
         {/* min-h-screen + flex-col + flex-1 → footer her zaman altta */}
-        <div className="flex-1 pt-4 pb-8">
+        <div className="flex-1 lg:pt-4 lg:pb-8">
           {children}
         </div>
 

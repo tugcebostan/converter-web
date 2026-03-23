@@ -18,13 +18,17 @@ type ToolLayoutProps = {
 
 export default function ToolLayout({ title, description, children, faq }: ToolLayoutProps) {
   return (
-    <main className="w-[calc(100%-8rem)] mx-auto px-8 py-6 bg-gray-900 text-white rounded-lg">
+    <main className="w-full sm:max-w-8xl lg:w-[calc(100%-8rem)] mx-auto px-4 sm:px-6 lg:px-8
+                     mx-auto py-6 bg-gray-900 text-white">
+      <AdSlot position="top" extClass="my-8 block md:hidden" />
       <h1 className="text-2xl font-bold mb-2">{title}</h1>
       <p className="text-gray-300 mb-6">{description}</p>
 
       <div className="grid md:grid-cols-3 gap-6">
 
         <div className="md:col-span-2 flex flex-col gap-6">
+
+
 
           {/* Araç bölümü */}
           <section aria-label={t.common.converterSectionLabel(title)}>
@@ -49,7 +53,6 @@ export default function ToolLayout({ title, description, children, faq }: ToolLa
           <AdSlot position="bottom" />
         </div>
 
-        {/* Reklam alanı */}
         <aside aria-label={t.common.adSideLabel} className="hidden md:block">
           <div className="sticky top-4">
             <AdSlot position="side" />
