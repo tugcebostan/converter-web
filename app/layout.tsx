@@ -11,8 +11,8 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   metadataBase: new URL("https://convertools.xyz"), 
   title: {
-    default: "ToolBox — Ücretsiz Online Araçlar",
-    template: "%s | ToolBox",
+    default: "ConverTools — Ücretsiz Online Araçlar",
+    template: "%s | ConverTools",
   },
   description: "Birim dönüştürücü, kod düzenleyici ve daha fazlası — ücretsiz online araçlar.",
 };

@@ -11,7 +11,7 @@ const tr = {
     swapLabel: "Birimleri değiştir",
     faqTitle: "Sık Sorulan Sorular",
     allRightsReserved: "Tüm hakları saklıdır.",
-    footerName: "ToolBox",
+    footerName: "ConverTools",
 
     // ↓ yeni eklenenler
     fromUnit: "Kaynak birim",
@@ -50,14 +50,14 @@ const tr = {
       "Günlük işlerini kolaylaştıran, hızlı ve kullanımı kolay araçlar. Kayıt gerekmez, tamamen ücretsiz.",
     metaTitle: "Ücretsiz Online Araçlar",
     metaDescription: "Birim dönüştürücü, kod düzenleyici, dosya dönüştürücü ve daha fazlası. Tüm araçlar ücretsiz ve reklamsız kullanılabilir.",
-    metaOgTitle: "ToolBox — Ücretsiz Online Araçlar",
+    metaOgTitle: "ConverTools — Ücretsiz Online Araçlar",
     metaOgDescription: "Günlük işlerini kolaylaştıran ücretsiz web araçları.",
 
   },
 
   // ─── Header ──────────────────────────────────────
   header: {
-    logoText: "ToolBox",
+    logoText: "ConverTools",
     openMenuLabel: "Menüyü aç/kapat",
     closeMenuLabel: "Menüyü kapat",
     desktopNavLabel: "Ana navigasyon",

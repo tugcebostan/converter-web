@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Ücretsiz Online Araçlar",
   description: "Birim dönüştürücü, kod düzenleyici, dosya dönüştürücü ve daha fazlası.",
   openGraph: {
-    title: "ToolBox — Ücretsiz Online Araçlar",
+    title: "ConverTools — Ücretsiz Online Araçlar",
     description: "Günlük işlerini kolaylaştıran ücretsiz web araçları.",
     type: "website",
   },
