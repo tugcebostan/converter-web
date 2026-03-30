@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://convertools.xyz/sitemap.xml",
+    sitemap: "https://convertools.com.tr/sitemap.xml",
   };
 }
