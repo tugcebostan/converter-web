@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  // Gereksiz response header'larını kaldırır
+  poweredByHeader: false,
+  // Sıkıştırma — Next.js varsayılan olarak açık, explicit yazıyoruz
+  compress: true,};
 
 export default nextConfig;
